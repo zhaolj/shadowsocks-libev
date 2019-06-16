@@ -24,7 +24,7 @@ ENV SS_CONFIG="-c /etc/shadowsocks-libev/config.json"
 ENV KCP_FLAG="false"
 ENV KCP_MODULE="kcpclient"
 ENV KCP_CONFIG=""
-ENV PXY_FLAG="ture"
+ENV PXY_FLAG="true"
 
 RUN set -ex \
     && apk update upgrade \

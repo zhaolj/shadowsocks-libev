@@ -27,7 +27,7 @@ ENV KCP_CONFIG=""
 ENV PXY_FLAG="ture"
 
 RUN set -ex \
-    && apk --update --upgrade \
+    && apk update upgrade \
     && apk add bash tzdata rng-tools runit privoxy \
 #        py-pip \
     && apk add --virtual .build-deps \

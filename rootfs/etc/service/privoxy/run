@@ -1,0 +1,11 @@
+#!/bin/bash
+
+exec 2>&1
+
+if [ "${PXY_FLAG}" == "true" ]; then
+    echo "starting privoxy..."
+    exec chpst -u privoxy /usr/sbin/privoxy /etc/privoxy/config
+else
+    exit 0
+fi
+

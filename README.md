@@ -13,12 +13,11 @@ Shadowsocks-libev & privoxy Docker Image based on [mritd/shadowsocks](https://hu
 
 ``` sh
 docker run -d --name ssclient -p 1080:1080 -p 8118:8118 \
-    zhaolj/shadowsocks-libev:latest \
     -v /path/to/your/libev-config:/etc/shadowsocks-libev \
     -e SS_MODULE="ss-local" \
     -e SS_CONFIG="-c /etc/shadowsocks-libev/config.json" \
-    -e PXY_FLAG="true"
-    
+    -e PXY_FLAG="true" \
+    zhaolj/shadowsocks-libev:latest    
 ```
 
 注意：将`/path/to/your/libev-config`替换为宿主机上所包含`ss-local`所需的`config.json`配置文件的目录
@@ -40,11 +39,11 @@ docker run -d --name ssclient -p 1080:1080 -p 8118:8118 \
 
 ``` sh
 docker run -d --name ssserver -p 6443:6443 -p 6500:6500/udp \
-    zhaolj/shadowsocks-libev:latest \
     -e SS_MODULE="ss-server" \
     -e SS_CONFIG="-s 0.0.0.0 -p 6443 -m chacha20-ietf-poly1305 -k test123" \
     -e KCP_FLAG="true" -e KCP_MODULE="kcpserver" \
-    -e KCP_CONFIG="-t 127.0.0.1:6443 -l :6500 -mode fast2"
+    -e KCP_CONFIG="-t 127.0.0.1:6443 -l :6500 -mode fast2" \
+    zhaolj/shadowsocks-libev:latest
 ```
 
 **以上命令相当于执行了**
@@ -58,12 +57,12 @@ kcpserver -t 127.0.0.1:6443 -l :6500 -mode fast2
 
 ``` sh
 docker run -d --name ssclient -p 1080:1080 -p 8118:8118 \
-    zhaolj/shadowsocks-libev:latest \
     -e SS_MODULE="ss-local" \
     -e SS_CONFIG="-s 127.0.0.1 -p 6500 -b 0.0.0.0 -l 1080 -m chacha20-ietf-poly1305 -k test123" \
     -e KCP_FLAG="true" -e KCP_MODULE="kcpclient" \
     -e KCP_CONFIG="-r SSSERVER_IP:6500 -l :6500 -mode fast2" \
-    -e PXY_FLAG="true"
+    -e PXY_FLAG="true" \
+    zhaolj/shadowsocks-libev:latest
 ```
 
 **以上命令相当于执行了** 

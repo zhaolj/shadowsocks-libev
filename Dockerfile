@@ -17,7 +17,7 @@ ARG SS_DOWNLOAD_URL=https://github.com/shadowsocks/shadowsocks-libev.git
 ARG KCP_DOWNLOAD_URL=https://github.com/xtaci/kcptun/releases/download/v${KCP_VERSION}/kcptun-linux-amd64-${KCP_VERSION}.tar.gz
 ARG PLUGIN_OBFS_DOWNLOAD_URL=https://github.com/shadowsocks/simple-obfs.git
 ARG PLUGIN_V2RAY_DOWNLOAD_URL=https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.1.0/v2ray-plugin-linux-amd64-v1.1.0.tar.gz
-#ENV LINUX_HEADERS_DOWNLOAD_URL=http://dl-cdn.alpinelinux.org/alpine/v3.7/main/x86_64/linux-headers-4.4.6-r2.apk
+
 ENV TZ ${TZ}
 ENV SS_MODULE="ss-local"
 ENV SS_CONFIG="-c /etc/shadowsocks-libev/config.json"
@@ -26,10 +26,14 @@ ENV KCP_MODULE="kcpclient"
 ENV KCP_CONFIG=""
 ENV PXY_FLAG="false"
 
+# RUN echo "52.74.223.119    github.com" >> /etc/hosts
+# RUN echo "151.101.229.194    github.global.ssl.fastly.net" >> /etc/hosts
+# RUN echo "185.199.110.153    assets-cdn.github.com" >> /etc/hosts
+# RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
 RUN set -ex \
     && apk update upgrade \
     && apk add bash tzdata rng-tools runit privoxy \
-#        py-pip \
     && apk add --virtual .build-deps \
         autoconf \
         automake \
@@ -71,7 +75,6 @@ RUN set -ex \
     && echo ${TZ} > /etc/timezone \
     && adduser -h /tmp -s /sbin/nologin -S -D -H shadowsocks \
     && adduser -h /tmp -s /sbin/nologin -S -D -H kcptun \
-    #&& apk del .build-deps .build-deps-kernel \
     && apk del .build-deps \
     && apk add --no-cache \
       $(scanelf --needed --nobanner /usr/bin/ss-* /usr/local/bin/obfs-* \

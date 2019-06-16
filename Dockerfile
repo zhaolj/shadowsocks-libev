@@ -24,7 +24,7 @@ ENV SS_CONFIG="-c /etc/shadowsocks-libev/config.json"
 ENV KCP_FLAG="false"
 ENV KCP_MODULE="kcpclient"
 ENV KCP_CONFIG=""
-ENV PXY_FLAG="true"
+ENV PXY_FLAG="false"
 
 RUN set -ex \
     && apk update upgrade \
@@ -86,5 +86,5 @@ SHELL ["/bin/bash"]
 ADD rootfs /
 EXPOSE 8118 1080
 VOLUME /etc/shadowsocks-libev
-USER nobody
+# USER nobody
 ENTRYPOINT ["/entrypoint.sh"]

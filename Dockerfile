@@ -83,6 +83,7 @@ RUN set -ex \
     && cd /tmp \
     && rm -rf /tmp/libev \
         /etc/service \
+        /etc/shadowsocks-libev \
         /var/cache/apk/* 
 
 SHELL ["/bin/bash"]

@@ -4,8 +4,8 @@
 
 Shadowsocks-libev & privoxy Docker Image based on [mritd/shadowsocks](https://hub.docker.com/r/mritd/shadowsocks) & [gd41340811/shadowsocks-privoxy](https://hub.docker.com/r/gd41340811/shadowsocks-privoxy)
 
-- **shadowsocks-libev version: 3.2.5**
-- **kcptun version: 20190611**
+- **shadowsocks-libev version: 3.3.4**
+- **kcptun version: 20200701**
 - **privoxy version：3.0.26**
 - **alpine version：latest**
 

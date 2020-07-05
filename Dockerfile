@@ -10,7 +10,7 @@ MAINTAINER zhaolj <zhaolj@gmail.com>
 # Environment variables:
 #------------------------------------------------------------------------------
 
-# ENV LIBEV_VER 3.2.5
+# ENV LIBEV_VER 3.3.4
 # ENV LIBEV_NAME shadowsocks-libev-${LIBEV_VER}
 # ENV LIBEV_RELEASE https://github.com/shadowsocks/shadowsocks-libev/releases/download/v${LIBEV_VER}/${LIBEV_NAME}.tar.gz
 
@@ -55,12 +55,12 @@ MAINTAINER zhaolj <zhaolj@gmail.com>
 
 
 ARG TZ='Asia/Shanghai'
-ARG SS_LIBEV_VERSION=v3.2.5
-ARG KCP_VERSION=20190611
+ARG SS_LIBEV_VERSION=v3.3.4
+ARG KCP_VERSION=20200701
 ARG SS_DOWNLOAD_URL=https://github.com/shadowsocks/shadowsocks-libev.git 
 ARG KCP_DOWNLOAD_URL=https://github.com/xtaci/kcptun/releases/download/v${KCP_VERSION}/kcptun-linux-amd64-${KCP_VERSION}.tar.gz
 ARG PLUGIN_OBFS_DOWNLOAD_URL=https://github.com/shadowsocks/simple-obfs.git
-ARG PLUGIN_V2RAY_DOWNLOAD_URL=https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.1.0/v2ray-plugin-linux-amd64-v1.1.0.tar.gz
+ARG PLUGIN_V2RAY_DOWNLOAD_URL=https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.1/v2ray-plugin-linux-amd64-v1.3.1.tar.gz
 
 ENV TZ ${TZ}
 ENV SS_MODULE="ss-local"
